@@ -7,7 +7,7 @@ import QtQuick.Controls.Styles 1.4
 
 ApplicationWindow {
     width: 320
-    height: 100
+    height: 150
 
     minimumHeight: height
     minimumWidth: width
@@ -47,9 +47,13 @@ ApplicationWindow {
 
             ComboBox {
                 id: commandsComboBox
+                wheelEnabled: true
+                font.family: "Courier"
+                font.pointSize: 5
                 Layout.fillWidth: true
                 Layout.minimumWidth: parent.width * 0.7
                 Layout.margins: 5
+                model: commandsHandlerModel
             }
 
             Button {
@@ -58,6 +62,9 @@ ApplicationWindow {
                 icon.color: Material.accentColor
                 Layout.fillWidth: true
                 Layout.margins: 5
+
+                onClicked: commandsHandlerModel.sendCommand(
+                               commandsComboBox.currentText)
             }
         }
     }

@@ -1,7 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 #include <QQuickStyle>
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -15,7 +17,12 @@ int main(int argc, char *argv[]) {
   QQmlApplicationEngine engine;
 
   const std::vector<std::string> kCommands{"turnOn", "turnOff"};
-  CommandsHandler commands_handler(kCommands, &app);
+  CommandsHandler commands_handler(
+      kCommands,
+      [&](const std::string command) { std::cout << command << std::endl; },
+      &app);
+  engine.rootContext()->setContextProperty("commandsHandlerModel",
+                                           &commands_handler);
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));
   QObject::connect(

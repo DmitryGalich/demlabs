@@ -1,8 +1,11 @@
 #include "commands_handler.h"
 
-CommandsHandler::CommandsHandler(const std::vector<std::string> &commands,
-                                 QObject *parent)
-    : QAbstractListModel(parent), kCommands_(commands) {}
+CommandsHandler::CommandsHandler(
+    const std::vector<std::string> &commands,
+    const std::function<void(const std::string &command)> sendCommandCallback,
+    QObject *parent)
+    : QAbstractListModel(parent), kCommands_(commands),
+      kSendCommandCallback_(sendCommandCallback) {}
 
 CommandsHandler::~CommandsHandler() {}
 
@@ -27,4 +30,8 @@ QHash<int, QByteArray> CommandsHandler::roleNames() const {
   roles[CommandRole] = "command";
 
   return roles;
+}
+
+void CommandsHandler::sendCommand(QString command) {
+  kSendCommandCallback_(command.toStdString());
 }
