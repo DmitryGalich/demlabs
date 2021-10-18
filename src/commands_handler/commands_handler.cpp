@@ -7,8 +7,6 @@ CommandsHandler::CommandsHandler(
     : QAbstractListModel(parent), kCommands_(commands),
       kSendCommandCallback_(sendCommandCallback) {}
 
-CommandsHandler::~CommandsHandler() {}
-
 int CommandsHandler::rowCount(const QModelIndex &parent) const {
   Q_UNUSED(parent);
   return kCommands_.size();

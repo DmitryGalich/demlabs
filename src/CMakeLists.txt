@@ -1,1 +1,2 @@
 add_subdirectory(commands_handler)
+add_subdirectory(communication_module)

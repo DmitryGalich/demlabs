@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Core Quick QuickControls2 REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick QuickControls2 Network REQUIRED)
 
 add_subdirectory(src)
 
@@ -26,4 +26,5 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Quick
     Qt5::QuickControls2
 
-    UI::CommandsHandler)
+    UI::CommandsHandler
+    Backend::CommunicationModule)

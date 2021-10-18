@@ -16,7 +16,7 @@ public:
       const std::vector<std::string> &commands,
       const std::function<void(const std::string &command)> sendCommandCallback,
       QObject *parent = nullptr);
-  virtual ~CommandsHandler() override;
+  virtual ~CommandsHandler() override = default;
 
   int rowCount(const QModelIndex &parent = QModelIndex()) const override;
   QVariant data(const QModelIndex &index,
