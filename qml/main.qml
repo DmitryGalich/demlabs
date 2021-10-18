@@ -19,18 +19,20 @@ ApplicationWindow {
     title: qsTr("Demlabs")
 
     Material.theme: Material.Dark
-    Material.accent: Material.color(Material.Green)
+    Material.accent: Material.color(Material.Blue)
 
     ColumnLayout {
         anchors.fill: parent
 
         Label {
-            text: qsTr("Выберите команду и нажмите \"Отправить\"")
+            text: qsTr("Выберите команду и нажмите кнопку для отправки")
 
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
 
             wrapMode: Text.WordWrap
+            font.bold: true
+            color: Material.color(Material.Grey, Material.Shade400)
 
             font.family: "Courier"
             font.pointSize: 10
@@ -44,14 +46,16 @@ ApplicationWindow {
             Layout.fillWidth: true
 
             ComboBox {
-                id: comboBox
+                id: commandsComboBox
                 Layout.fillWidth: true
                 Layout.minimumWidth: parent.width * 0.7
                 Layout.margins: 5
             }
 
             Button {
-                id: button
+                id: sendButton
+                icon.source: "res/send.png"
+                icon.color: Material.accentColor
                 Layout.fillWidth: true
                 Layout.margins: 5
             }

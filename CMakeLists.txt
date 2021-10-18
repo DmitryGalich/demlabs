@@ -15,7 +15,7 @@ find_package(Qt5 COMPONENTS Core Quick QuickControls2 REQUIRED)
 
 add_executable(${PROJECT_NAME}
     main.cpp
-    qml.qrc
+    qml/qml.qrc
 )
 
 target_link_libraries(${PROJECT_NAME}
